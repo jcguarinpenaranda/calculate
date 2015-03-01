@@ -1,4 +1,4 @@
-<md-content md-scroll-y flex>
+<!--<md-content md-scroll-y flex>
 
 <md-card>
     <h1 layout="row" layout-align="center" ng-show="resultString" class="trimed">{{resultString}}</h1>
@@ -13,10 +13,10 @@
         <md-button flex class="md-raised md-warn" ng-click="clearAll()">CE</md-button>
 </div>
 <div layout="row" class="calcrow">
-        <md-button flex class="md-raised" ng-click="add(7)">7</md-button>
-        <md-button flex class="md-raised" ng-click="add(8)">8</md-button>
-        <md-button flex class="md-raised" ng-click="add(9)">9</md-button>
-        <md-button flex class="md-raised" ng-click="add('/')">/</md-button>
+        <md-button flex ng-click="add(7)">7</md-button>
+        <md-button flex ng-click="add(8)">8</md-button>
+        <md-button flex ng-click="add(9)">9</md-button>
+        <md-button flex ng-click="add('/')">/</md-button>
 </div>
 <div layout="row" class="calcrow">
         <md-button flex class="md-raised" ng-click="add(4)">4</md-button>
@@ -38,3 +38,161 @@
 </div>
 </md-card>    
 </md-content>
+-->
+
+
+
+<!--
+<div layout="column" layout-fill>
+    <md-whiteframe flex=30 class="md-whiteframe-z1" layout layout-align="center center">
+    <h1 style="word-wrap: break-word;">{{resultString}}</h1>
+    <h3 style="position:relative; top:0; left:10px; color:gray">{{operation}}</h3>
+          </md-whiteframe>
+    <div layout="row" layout-wrap flex>
+            <md-button flex="25" class="md-accent md-raised" ng-click="add2('cos')">cos()</md-button>
+            <md-button flex="25" class="md-accent md-raised" ng-click="add2('sin')">sin()</md-button>
+            <md-button flex="25" class="md-accent md-raised" ng-click="add2('tan')">tan()</md-button>
+            <md-button flex="25" class="md-accent md-raised" ng-click="add2('cot')">cot()</md-button>
+            <md-button flex="25" class="md-accent md-raised" ng-click="add2('sqrt')">sqrt()</md-button>
+            <md-button flex="25" class="md-accent md-raised" ng-click="add2('(')">(</md-button>
+            <md-button flex="25" class="md-accent md-raised" ng-click="add2(')')">)</md-button>
+            <md-button flex="25" class="md-warn md-raised" ng-click="clear()" ng-mousedown="longPressStart()" ng-mouseup ="longPressEnd()">del</md-button>
+    </div>
+    <div layout="row" flex=50>
+        <div layout="row" layout-wrap flex=80>
+            <md-button flex="33" class="md-raised" ng-click="add(9)">9</md-button>
+            <md-button flex="33" class="md-raised" ng-click="add(8)">8</md-button>
+            <md-button flex="33" class="md-raised" ng-click="add(7)">7</md-button>
+            <md-button flex="33" class="md-raised" ng-click="add(6)">6</md-button>
+            <md-button flex="33" class="md-raised" ng-click="add(5)">5</md-button>
+            <md-button flex="33" class="md-raised" ng-click="add(4)">4</md-button>
+            <md-button flex="33" class="md-raised" ng-click="add(3)">3</md-button>
+            <md-button flex="33" class="md-raised" ng-click="add(2)">2</md-button>
+            <md-button flex="33" class="md-raised" ng-click="add(1)">1</md-button>
+            <md-button flex="33" class="md-raised" ng-click="add('.')">.</md-button>
+            <md-button flex="33" class="md-raised" ng-click="add(0)">0</md-button>
+            <md-button flex="33" class="md-raised md-primary" ng-click="calculate()">=</md-button>
+        </div>
+        <div layout="column" flex=20>
+            <md-button flex="25" class="md-raised" ng-click="add('*')">*</md-button>
+            <md-button flex="25" class="md-raised" ng-click="add('/')">/</md-button>
+            <md-button flex="25" class="md-raised" ng-click="add('+')">+</md-button>
+            <md-button flex="25" class="md-raised" ng-click="add('-')">-</md-button>
+        </div>
+    </div>
+</div>
+
+-->
+
+<!--
+<style type="text/css">
+    .button{
+        height:80px;
+    }
+
+    @media (max-width: 600px){
+        .button{
+            height:40px;
+        }
+    }
+
+    .pad{
+        background-color: silver;
+    }
+
+    .functionsPad{
+        background-color: gray;
+    }
+
+</style>-->
+
+
+<style type="text/css">
+    body, html{
+            height:100%;
+    }
+
+    table, tr, td{
+        margin:0;
+        padding: 0;
+    }
+
+    table{
+        width:100%;
+        height:100%;
+        overflow: hidden;
+        table-layout:fixed;
+    }
+    
+    .button{
+        width:100%;
+        height:100%;
+        margin:0;
+        padding: 0;
+    }
+</style>
+
+<center>
+    <table style="height:100vh; width:100%; overflow:hidden; padding:0; margin:0;">
+        <tr style="height:30%;"><td>
+            <table>
+                <tr>
+                    <td>
+                        <div style="width:80%; margin:0 auto; overflow-x:auto">
+                            <p style="color:gray; position:relative; top:0; left:10px; width:80%">{{operation}}</p>
+                            <h1 style="margin:0 auto; max-width:100%; overflow-x:auto; text-align:center;">{{resultString}}</h1>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td></tr>
+        <tr style="height:20%">
+            <td>
+                <table>
+                    <tr>
+                        <td><md-button class="md-accent button " ng-click="add2('cos')">cos()</md-button></td>
+                        <td><md-button class="md-accent button " ng-click="add2('sin')">sin()</md-button></td>
+                        <td><md-button class="md-accent button " ng-click="add2('tan')">tan()</md-button></td>
+                        <td><md-button class="md-accent button " ng-click="add2('cot')">cot()</md-button></td>
+                    </tr>
+                    <tr>
+                        <td><md-button class="md-accent button " ng-click="add2('cot')">sqrt()</md-button></td>
+                        <td><md-button class="md-accent button " ng-click="add2('(')">(</md-button></td>
+                        <td><md-button class="md-accent button " ng-click="add2(')')">)</md-button></td>
+                        <td><md-button class="md-warn button" ng-click="clear()" ng-mousedown="longPressStart()" ng-mouseup ="longPressEnd()">DEL</md-button></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr style="height:50%;">
+            <td>
+                <table>
+                    <tr>
+                        <td><md-button class="button" ng-click="add(7)">7</md-button></td>
+                        <td><md-button class="button" ng-click="add(8)">8</md-button></td>
+                        <td><md-button class="button" ng-click="add(9)">9</md-button></td>
+                        <td><md-button class="button" ng-click="add('*')">*</md-button></td>
+                    </tr>
+                    <tr>
+                        <td><md-button class="button" ng-click="add(4)">4</md-button></td>
+                        <td><md-button class="button" ng-click="add(5)">5</md-button></td>
+                        <td><md-button class="button" ng-click="add(6)">6</md-button></td>
+                        <td><md-button class="button" ng-click="add('/')">/</md-button></td>
+                    </tr>
+                    <tr>
+                        <td><md-button class="button" ng-click="add(1)">1</md-button></td>
+                        <td><md-button class="button" ng-click="add(2)">2</md-button></td>           
+                        <td><md-button class="button" ng-click="add(3)">3</md-button></td>
+                        <td><md-button class="button" ng-click="add('-')">-</md-button></td>
+                    </tr>
+                    <tr>
+                        <td><md-button class="button" ng-click="add('.')">.</md-button></td>
+                        <td><md-button class="button" ng-click="add(0)">0</md-button></td>
+                        <td><md-button class="button md-primary md-raised" ng-click="calculate()">=</md-button></td>
+                        <td><md-button class="button" ng-click="add('+')">+</md-button></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</center>

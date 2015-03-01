@@ -3,7 +3,7 @@ var app = angular.module('StarterApp', ['ngMaterial','ngMdIcons','ngRoute']);
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('teal')
-    //.accentPalette('orange');
+    .accentPalette('red');
 });
 
 app.config(function($routeProvider){
@@ -27,27 +27,116 @@ app.directive('calcNav', function() {
         };
     });
 
-app.controller('CalcCtrl', function($scope){
+app.controller('CalcCtrl', function($scope, $timeout){
 	 $scope.resultString="";
+	 $scope.operation="";
+
+	 $scope.userHistory = [];
 
 	  $scope.add=function(value){
-	  	$scope.resultString += value;
+	  	if(true){ //$scope.resultString.length<15
+		  	$scope.resultString += value;
+		  	$scope.operation ="";
+	  	}
+	  }
+
+	  $scope.add2 = function(str){
+	  	var st="";
+
+	  	if(!$scope.resultString.length){
+	  		if(str=="(" || str==")"){
+	  			$scope.resultString+=str;
+	  		}else{
+		  		$scope.resultString+=str+"(";
+	  		}
+	  		return;
+	  	}
+
+  		var num = $scope.resultString.charAt($scope.resultString.length-1);
+	  	try{
+	  		if(typeof eval(num+1) == "number"){
+		  		if(str == ")"){
+		  			$scope.resultString+=str;
+		  		}else if(str=="("){
+		  			$scope.resultString+="*"+str;
+		  		}else{
+		  			$scope.resultString+="*"+str+"(";
+		  		}
+	  		}
+	  	}catch(e){
+	  		//so, it was not a number
+	  		if(num == ")"){
+	  			if(str == ")"){
+		  			$scope.resultString+=str;
+	  			}else{
+			  		$scope.resultString+="*"+str+"(";
+	  			}
+	  		}else{
+	  			if(num == "("){
+		  			if(str=="(" || str==")"){
+			  			$scope.resultString+=str;
+		  			}else{
+			  			$scope.resultString+=str+"(";
+		  			}
+		  		}
+	  		}
+	  	}
+	  }
+
+	  function cos(value){
+	  	return Math.cos(value)
+	  }
+
+	  function sin(value){
+	  	return Math.sin(value)
+	  }
+
+	  function cot(value){
+	  	return 1/Math.tan(value)
+	  }
+
+	  function tan(value){
+	  	return Math.tan(value)
+	  }
+
+	  function sqrt(value){
+	  	return Math.sqrt(value)
 	  }
 
 	  $scope.calculate = function(){
 	  	try{
-		  	$scope.resultString = eval($scope.resultString);
+	  		$scope.operation = $scope.resultString+"=";
+		  	$scope.userHistory.push($scope.resultString);
+		  	$scope.resultString = eval($scope.resultString) + "";
 	  	}catch(e){
 	  		$scope.resultString = "Error";
 	  	}
 	  }
 
+	  $scope.longPressPromise;
+
+	  $scope.longPressStart = function(){
+	  	$scope.longPressPromise = $timeout(function(){
+	  		$scope.clearAll();
+	  	}, 400)
+	  }
+
+	  $scope.longPressEnd = function(){
+	  	if($scope.longPressPromise){
+	  		$timeout.cancel($scope.longPressPromise);
+	  	}
+	  }
+
 	  $scope.clearAll = function(){
 	  	$scope.resultString = "";
+	  	$scope.operation="";
 	  }
 
 	  $scope.clear = function(){
-	  	if($scope.resultString.length){
+	  	if($scope.resultString == "Error"){
+	  		$scope.clearAll();
+	  	}
+	  	else if($scope.resultString.length){
 		  	$scope.resultString = $scope.resultString.slice(0,$scope.resultString.length-1);
 	  	}
 	  }
