@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="StarterApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <link rel="stylesheet" href="lib/materialdesign/angular-material.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body layout="column" ng-controller="AppCtrl">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button ng-click="openNavbar()">
+                <!--<img src="lib/materialdesign/menu.svg">-->
+                <ng-md-icon icon="menu" ></ng-md-icon>
+            </md-button>
+            <span>Calculate</span>
+            <!-- fill up the space between left and right area -->
+            <span flex></span>
+        </div>
+    </md-toolbar>
+
+<calc-nav></calc-nav>
+<div ng-view></div>
+
+
+<!-- Angular Material Dependencies -->
+<script src="lib/angularjs/angular.min.js"></script>
+<script src="lib/angularjs/angular-animate.min.js"></script>
+<script src="lib/angularjs/angular-route.js"></script>
+<script src="lib/angularjs/angular-aria.min.js"></script>
+<script src="lib/angularjs/angular-material.min.js"></script>
+<script src="lib/angularjs/angular-material-icons.min.js"></script>
+
+<!-- My Angular Files -->
+<script src="js/controllers.js"></script>
+</body>
+</html>

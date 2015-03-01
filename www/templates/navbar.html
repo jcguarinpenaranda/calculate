@@ -1,0 +1,19 @@
+<md-sidenav md-component-id="mainNavbar" class="md-sidenav-left">
+    <md-toolbar>
+        
+        <div class="md-toolbar-tools">
+
+            <span>Menu</span>
+            <span flex></span>
+            <md-button ng-click="toggleNavbar()">
+                    <!--<img src="lib/materialdesign/menu.svg">-->
+                X
+            </md-button>
+        </div>
+    </md-toolbar>
+    <div layout="column">
+        <md-button href="#/" class="md-raised btn-lg" ng-click="toggleNavbar()" flex>Calculator</md-button>
+        <md-button ng-click="toggleNavbar()" class="md-raised btn-lg" href="#/about" flex>About</md-button>
+    </div>
+    
+</md-sidenav>

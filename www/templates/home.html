@@ -1,0 +1,39 @@
+<md-content md-scroll-y flex>
+
+<md-card>
+    <h1 layout="row" layout-align="center" ng-show="resultString" class="trimed">{{resultString}}</h1>
+    <h4 style="color:silver; text-align:center" ng-show="!resultString">Enter your math operation</h4>
+</md-card>
+
+
+<md-card id="calculator">
+<div layout="row" class="calcrow">
+        <md-button flex class="md-raised" ng-click="clear()">C</md-button>
+        <md-button flex class="md-raised md-warn" ng-click="clearAll()">CE</md-button>
+</div>
+<div layout="row" class="calcrow">
+        <md-button flex class="md-raised" ng-click="add(7)">7</md-button>
+        <md-button flex class="md-raised" ng-click="add(8)">8</md-button>
+        <md-button flex class="md-raised" ng-click="add(9)">9</md-button>
+        <md-button flex class="md-raised" ng-click="add('/')">/</md-button>
+</div>
+<div layout="row" class="calcrow">
+        <md-button flex class="md-raised" ng-click="add(4)">4</md-button>
+        <md-button flex class="md-raised" ng-click="add(5)">5</md-button>
+        <md-button flex class="md-raised" ng-click="add(6)">6</md-button>
+        <md-button flex class="md-raised" ng-click="add('*')">*</md-button>
+</div>
+<div layout="row" class="calcrow">
+        <md-button flex class="md-raised" ng-click="add(1)">1</md-button>
+        <md-button flex class="md-raised" ng-click="add(2)">2</md-button>
+        <md-button flex class="md-raised" ng-click="add(3)">3</md-button>
+        <md-button flex class="md-raised" ng-click="add('-')">-</md-button>
+</div>
+<div layout="row" class="calcrow">
+        <md-button flex class="md-raised" ng-click="add(0)">0</md-button>
+        <md-button flex class="md-raised" ng-click="add('.')">.</md-button>
+        <md-button flex class="md-raised md-primary" ng-click="calculate()">=</md-button>
+        <md-button flex  class="md-raised" ng-click="add('+')">+</md-button>
+</div>
+</md-card>    
+</md-content>
