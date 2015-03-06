@@ -1,4 +1,4 @@
-var app = angular.module('StarterApp', ['ngMaterial','ngMdIcons','ngRoute']);
+var app = angular.module('StarterApp', ['ngMaterial', 'ngMdIcons','ngRoute']);
 
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
@@ -67,19 +67,34 @@ app.controller('CalcCtrl', function($scope, $timeout){
 	  		//so, it was not a number
 	  		if(num == ")"){
 	  			if(str == ")"){
-		  			$scope.resultString+=str;
+		  			$scope.resultString+=str;//()
 	  			}else{
-			  		$scope.resultString+="*"+str+"(";
+			  		$scope.resultString+="*"+str+"("; //*cos(
 	  			}
 	  		}else{
 	  			if(num == "("){
 		  			if(str=="(" || str==")"){
-			  			$scope.resultString+=str;
+			  			$scope.resultString+=str;//(( o ()
 		  			}else{
-			  			$scope.resultString+=str+"(";
+			  			$scope.resultString+=str+"(";//(cos(
+		  			}
+		  		}else{
+		  			if(str=="(" || str==")"){
+			  			$scope.resultString+=str;//+ - / *   Ex: 1/(1-2)
+		  			}else{
+			  			$scope.resultString+=str+"(";//+ - / *   Ex: 1/(1-2)
 		  			}
 		  		}
 	  		}
+	  	}
+	  }
+
+	  $scope.resumeCalculation = function(){
+	  	if($scope.operation){
+	  		var a = $scope.operation.slice(0,$scope.operation.length-1);
+	  		$scope.resultString = a;
+		  	$scope.operation = "";
+
 	  	}
 	  }
 

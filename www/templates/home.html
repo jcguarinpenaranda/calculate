@@ -129,7 +129,9 @@
         height:100%;
         margin:0;
         padding: 0;
+        font-size: 1.1em;
     }
+
 </style>
 
 <center>
@@ -138,9 +140,9 @@
             <table>
                 <tr>
                     <td>
-                        <div style="width:80%; margin:0 auto; overflow-x:auto">
-                            <p style="color:gray; position:relative; top:0; left:10px; width:80%">{{operation}}</p>
-                            <h1 style="margin:0 auto; max-width:100%; overflow-x:auto; text-align:center;">{{resultString}}</h1>
+                        <div style="width:80%; margin:0 auto; ">
+                            <div ng-show="operation.length" style="color:gray; overflow-x:auto; position:relative; top:0; left:10px; width:100%" ng-click="resumeCalculation()">{{operation}}</div>
+                            <p style="margin:0 auto; padding:10px; text-align:center; font-size:1.7em;  word-wrap:break-word;">{{resultString}}</p>
                         </div>
                     </td>
                 </tr>
@@ -156,16 +158,16 @@
                         <td><md-button class="md-accent button " ng-click="add2('cot')">cot()</md-button></td>
                     </tr>
                     <tr>
-                        <td><md-button class="md-accent button " ng-click="add2('cot')">sqrt()</md-button></td>
+                        <td><md-button class="md-accent button " ng-click="add2('sqrt')">sqrt()</md-button></td>
                         <td><md-button class="md-accent button " ng-click="add2('(')">(</md-button></td>
                         <td><md-button class="md-accent button " ng-click="add2(')')">)</md-button></td>
-                        <td><md-button class="md-warn button" ng-click="clear()" ng-mousedown="longPressStart()" ng-mouseup ="longPressEnd()">DEL</md-button></td>
+                        <td><md-button class="md-warn button" ng-click="clear()" ng-mousedown="longPressStart()" ng-mouseup ="longPressEnd()" id="delete">DEL</md-button></td>
                     </tr>
                 </table>
             </td>
         </tr>
-        <tr style="height:50%;">
-            <td>
+        <tr style="height:50%; width:100%; overflow:auto;">
+            <td style="width:100%">
                 <table>
                     <tr>
                         <td><md-button class="button" ng-click="add(7)">7</md-button></td>
